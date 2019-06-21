@@ -23,6 +23,9 @@ driver.get(url)
 // }
 // findInput()
 
-driver.findElement(By.name("name")).sendKeys("Found this element by name.")
+driver
+  .findElement(By.id("registrar"))
+  .findElement(By.css("input"))
+  .sendKeys("Found this element by name.")
 
 // driver.close()
