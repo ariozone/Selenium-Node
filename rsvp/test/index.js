@@ -14,7 +14,9 @@ async function findInput() {
   const form = driver.findElement(By.id("registrar"))
   try {
     const fieldName = await form.getTagName()
+    const fieldSize = await form.getRect()
     console.log(fieldName)
+    console.dir(fieldSize)
   } catch (error) {
     console.error(error)
   }
