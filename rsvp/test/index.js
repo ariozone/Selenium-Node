@@ -5,10 +5,20 @@ const By = selenium.By
 
 driver.get(url)
 
-const inputField = driver.findElement(
-  By.xpath("/html/body/div/header/form/input")
-)
+//Using explicit xpath to find element
+// const inputField = driver.findElement(
+//   By.xpath("/html/body/div/header/form/input")
+// )
 
-inputField.sendKeys("Found this element with an explicit xpath")
+async function findInput() {
+  const form = driver.findElement(By.id("registrar"))
+  try {
+    const fieldName = await form.getTagName()
+    console.log(fieldName)
+  } catch (error) {
+    console.error(error)
+  }
+}
+findInput()
 
 // driver.close()
