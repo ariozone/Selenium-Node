@@ -10,21 +10,18 @@ driver.get(url)
 //   By.xpath("/html/body/div/header/form/input")
 // )
 
-// async function findInput() {
-//   const form = driver.findElement(By.id("registrar"))
-//   try {
-//     const fieldName = await form.getTagName()
-//     const fieldSize = await form.getRect()
-//     console.log(fieldName)
-//     console.dir(fieldSize)
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
-// findInput()
-
-const form = driver.findElement(By.id("registrar"))
-form.findElement(By.css("input")).sendKeys("Ario")
-form.findElement(By.css("button")).click()
+async function getAsynchronously() {
+  // const form = driver.findElement(By.id("registrar"))
+  // form.findElement(By.css("input")).sendKeys("Ario")
+  // form.findElement(By.css("button")).click()
+  try {
+    const header = driver.findElement(By.css("h1"))
+    const text = await header.getText()
+    console.log(text)
+  } catch (error) {
+    console.error(error)
+  }
+}
+getAsynchronously()
 
 // driver.close()
