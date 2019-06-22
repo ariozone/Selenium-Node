@@ -1,34 +1,11 @@
 const selenium = require("selenium-webdriver")
-const By = selenium.By
+
 const driver = new selenium.Builder().forBrowser("chrome").build()
-const { url } = require("../../config.json")
+const HomePage = require("./home")
 
-driver.get(url)
+const homePage = new HomePage(driver)
 
-const locators = {
-  inviteeForm: By.id("registrar"),
-  inviteeNameField: By.name("name"),
-  formSubmit: By.css("button"),
-  toggleVisiblity: By.css(".main > div input"),
-  removeButtonForInvitee: invitee =>
-    By.xpath(`//span[text()= "${invitee}"]/../button[last()]`)
-}
-
-function addInvitee(name) {
-  driver.findElement(locators.inviteeNameField).sendKeys(name)
-  driver.findElement(locators.inviteeForm)
-  driver.findElement(locators.formSubmit).click()
-}
-function toggleVisiblity() {
-  driver
-    .findElement(locators.toggleVisiblity)
-    .click()
-    .catch()
-}
-
-function removeInvitee(invitee) {
-  driver.findElement(locators.removeButtonForInvitee(invitee)).click()
-}
+homePage.open()
 
 const invitees = [
   "Gonzalo Torres del Fierro",
@@ -57,9 +34,9 @@ const invitees = [
   "Brent Suggs"
 ]
 
-invitees.forEach(invitee => addInvitee(invitee))
-removeInvitee("Shadd Anderson")
+invitees.forEach(invitee => homePage.addInvitee(invitee))
 
-// toggleVisiblity()
+homePage.removeInvitee("Shadd Anderson")
+homePage.toggleVisiblity()
 
-// driver.close()
+// homePage.close()
