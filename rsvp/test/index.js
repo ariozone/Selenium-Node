@@ -23,9 +23,8 @@ driver.get(url)
 // }
 // findInput()
 
-driver
-  .findElement(By.id("registrar"))
-  .findElement(By.css("input"))
-  .sendKeys("Found this element by name.")
+const form = driver.findElement(By.id("registrar"))
+form.findElement(By.css("input")).sendKeys("Ario")
+form.findElement(By.css("button")).click()
 
 // driver.close()
