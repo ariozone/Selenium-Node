@@ -1,5 +1,5 @@
 {
-  "rsvp": "http://port-80-nrm16ivxi8.treehouse-app.com/",
+  "rsvp": "https://treehouse-projects.github.io/selenium-webdriver-intermediate/waits/app/index.html",
   "rsvp-app": "file:///Users/ariozone/code/Selenium-Node/rsvp/index.html",
   "php-travels-homepage": {
     "url": "https://www.phptravels.net/",
