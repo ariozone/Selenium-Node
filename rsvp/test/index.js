@@ -1,4 +1,5 @@
 const selenium = require("selenium-webdriver")
+const fs = require("fs")
 
 const driver = new selenium.Builder().forBrowser("chrome").build()
 const HomePage = require("./home")
@@ -41,5 +42,9 @@ homePage.findInviteeByName("Shadd Anderson").remove()
 homePage.findInviteeByName("Jennifer Nordell").toggleConfirmation()
 homePage.findInviteeByName("Gonzalo Torres del Fierro").editName("Ario")
 // homePage.toggleVisiblity()
+
+driver.takeScreenshot().then((image, err) => {
+  fs.writeFile("layout.png", image, "base64", err => console.error(err))
+})
 
 // homePage.close()
