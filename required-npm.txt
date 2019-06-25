@@ -1,0 +1,4 @@
+npm install selenium-webdriver
+npm install -g mocha
+npm install -g chromedriver
+npm install -g geckodriver
