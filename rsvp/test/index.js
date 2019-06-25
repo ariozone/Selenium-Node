@@ -39,6 +39,7 @@ invitees.forEach(invitee => homePage.addInvitee(invitee))
 
 homePage.findInviteeByName("Shadd Anderson").remove()
 homePage.findInviteeByName("Jennifer Nordell").toggleConfirmation()
+homePage.findInviteeByName("Gonzalo Torres del Fierro").editName("Ario")
 // homePage.toggleVisiblity()
 
 // homePage.close()

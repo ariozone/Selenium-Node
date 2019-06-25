@@ -1,5 +1,5 @@
 const By = require("selenium-webdriver").By
-const { url: url } = require("../../config.json")
+const { rsvp } = require("../../config.json")
 
 class HomePage {
   constructor(driver) {
@@ -16,7 +16,7 @@ class HomePage {
   }
 
   open() {
-    this.driver.get(url)
+    this.driver.get(rsvp)
   }
 
   addInvitee(name) {
@@ -36,12 +36,6 @@ class HomePage {
       .click()
       .catch()
   }
-
-  // removeInvitee(invitee) {
-  //   this.driver
-  //     .findElement(this.locators.removeButtonForInvitee(invitee))
-  //     .click()
-  // }
 }
 
 class Invitee {
@@ -49,7 +43,9 @@ class Invitee {
     this.element = element
     this.locators = {
       removeButton: By.css("button:last-child"),
-      confirmedCheckbox: By.css("input[type='checkbox']")
+      confirmedCheckbox: By.css("input[type='checkbox']"),
+      editButton: By.css("button:first-of-type"),
+      textInput: By.css("input[type='text']")
     }
   }
   remove() {
@@ -58,6 +54,15 @@ class Invitee {
 
   toggleConfirmation() {
     this.element.findElement(this.locators.confirmedCheckbox).click()
+  }
+
+  editName(name) {
+    const editButton = this.element.findElement(this.locators.editButton)
+    editButton.click()
+    const inputField = this.element.findElement(this.locators.textInput)
+    inputField.clear()
+    inputField.sendKeys(name)
+    editButton.click()
   }
 }
 module.exports = HomePage
