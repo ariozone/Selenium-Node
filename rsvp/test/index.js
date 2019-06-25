@@ -35,8 +35,10 @@ const invitees = [
 ]
 
 invitees.forEach(invitee => homePage.addInvitee(invitee))
+// homePage.removeInvitee("Shadd Anderson")
 
-homePage.removeInvitee("Shadd Anderson")
-homePage.toggleVisiblity()
+homePage.findInviteeByName("Shadd Anderson").remove()
+homePage.findInviteeByName("Jennifer Nordell").toggleConfirmation()
+// homePage.toggleVisiblity()
 
 // homePage.close()

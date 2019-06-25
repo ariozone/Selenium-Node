@@ -10,7 +10,8 @@ class HomePage {
       formSubmit: By.css("button"),
       toggleVisiblity: By.css(".main > div input"),
       removeButtonForInvitee: invitee =>
-        By.xpath(`//span[text()= "${invitee}"]/../button[last()]`)
+        By.xpath(`//span[text() = "${invitee}"]/../button[last()]`),
+      inviteeByName: name => By.xpath(`//span[text() = "${name}"]/..`)
     }
   }
 
@@ -23,6 +24,12 @@ class HomePage {
     this.driver.findElement(this.locators.inviteeForm)
     this.driver.findElement(this.locators.formSubmit).click()
   }
+
+  findInviteeByName(name) {
+    const el = this.driver.findElement(this.locators.inviteeByName(name))
+    return new Invitee(el)
+  }
+
   toggleVisiblity() {
     this.driver
       .findElement(this.locators.toggleVisiblity)
@@ -30,11 +37,27 @@ class HomePage {
       .catch()
   }
 
-  removeInvitee(invitee) {
-    this.driver
-      .findElement(this.locators.removeButtonForInvitee(invitee))
-      .click()
-  }
+  // removeInvitee(invitee) {
+  //   this.driver
+  //     .findElement(this.locators.removeButtonForInvitee(invitee))
+  //     .click()
+  // }
 }
 
+class Invitee {
+  constructor(element) {
+    this.element = element
+    this.locators = {
+      removeButton: By.css("button:last-child"),
+      confirmedCheckbox: By.css("input[type='checkbox']")
+    }
+  }
+  remove() {
+    this.element.findElement(this.locators.removeButton).click()
+  }
+
+  toggleConfirmation() {
+    this.element.findElement(this.locators.confirmedCheckbox).click()
+  }
+}
 module.exports = HomePage
