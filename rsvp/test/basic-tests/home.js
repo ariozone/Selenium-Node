@@ -1,5 +1,5 @@
 const By = require("selenium-webdriver").By
-const { rsvp } = require("../../config.json")
+const { rsvp } = require("../../../config.json")
 
 class HomePage {
   constructor(driver) {
