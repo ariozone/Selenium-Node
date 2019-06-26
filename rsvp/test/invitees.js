@@ -3,43 +3,35 @@ const { Browser, By, Key, until } = require("selenium-webdriver")
 const { suite } = require("selenium-webdriver/testing")
 const assert = require("assert")
 
-// We set up this sample app on a public web server for your convenience.
-// But when you're testing your own apps, you'll probably want to install it on the same
-// computer where you're running your tests, so that you can connect to "localhost"
-// and not have your tests slowed down by network delays.
-const url =
-  "https://treehouse-projects.github.io/selenium-webdriver-intermediate/waits/app/index.html"
+const url = rsvp
 
 suite(function(env) {
   describe("RSVP site", function() {
-    it("has invitee list", function() {
-      // env passed in from suite() is an object that can build web driver instances
-      env
-        .builder()
-        .build()
-        // We won't get the driver back right away. Instead, we get a PROMISE
-        // that we'll EVENTUALLY get a driver. We need to call then() on
-        // this promise, and pass it a callback function that will be called when
-        // the driver is available.
-        // This uses JavaScript's arrow function syntax. If you're not familiar
-        // with this notation, see below.
-        .then(driver => {
-          // Get the webpage. Since we have to send a network request
-          // for the page, again, this is something that won't complete right
-          // away.
-          driver
-            .get(url)
-            // Again, returns a promise we need to call then() on.
-            // We pass then() a function that will be called once the page
-            // is retrieved.
-            .then(() => driver.findElements(By.id("invitedList")))
-            // findElements() returns ANOTHER promise. When the list of
-            // matching elements is found, we test that it's not empty.
-            .then(elements => assert(elements.length > 0))
-            // Finally, we need to tell WebDriver to exit, so it doesn't
-            // leave an open browser cluttering our desktop.
-            .then(() => driver.quit())
-        })
+    // In order to use the await keyword, we need to indicate this function is
+    // asynchronous. We do that by adding the async keyword before the
+    // function keyword.
+    it("has invitee list", async function() {
+      this.timeout(5000)
+      // Calling build() to build a driver still returns a promise. But instead
+      // of calling then() on that promise, we can place the await keyword right
+      // before the call that returns the promise. JavaScript will pause the
+      // execution of the asynchronous function, and wait for the promise to
+      // resolve. When it does, await will return the resolved promise's value,
+      // that is, the new driver object. We then assign that object to a variable
+      // named driver.
+      let driver = await env.builder().build()
+      // Same idea here. get() still returns a promise, but typing await before
+      // the call pauses execution until the page is retrieved and the promise
+      // is resolved. In this case, we don't need to assign the promise's value
+      // anywhere.
+      await driver.get(url)
+      // Another promise, another await keyword. When it resolves, the returned
+      // list of elements is assigned to the elements variable.
+      let elements = await driver.findElements(By.id("invitedList"))
+      // Now we can check the list of elements to ensure it's not empty.
+      assert(elements.length > 0)
+      // Finally, we can tell the driver to close the browser.
+      driver.quit()
     })
   })
 })
