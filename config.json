@@ -12,5 +12,6 @@
     "password": "demoadmin"
   },
   "automation_practice": "http://automationpractice.com/index.php",
-  "demo_qa": "https://demoqa.com/"
+  "demo_qa": "https://demoqa.com/",
+  "scroll_magic": "http://scrollmagic.io/examples/advanced/infinite_scrolling.html"
 }
