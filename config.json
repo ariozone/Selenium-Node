@@ -13,5 +13,8 @@
   },
   "automation_practice": "http://automationpractice.com/index.php",
   "demo_qa": "https://demoqa.com/",
-  "scroll_magic": "http://scrollmagic.io/examples/advanced/infinite_scrolling.html"
+  "scroll_magic": "http://scrollmagic.io/examples/advanced/infinite_scrolling.html",
+  "drag_and_drop": "https://crossbrowsertesting.github.io/drag-and-drop.html",
+  "selenium_test_examples": "http://crossbrowsertesting.github.io/selenium_example_page.html",
+  "by_js_locator": "https://treehouse-projects.github.io/selenium-webdriver-intermediate/byjs/app/"
 }
