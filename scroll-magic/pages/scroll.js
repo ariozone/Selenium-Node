@@ -1,9 +1,7 @@
 // We load the same set of objects from the "selenium-webdriver"
 // module that we did for our previous page objects.
 const { Browser, By, Key, until } = require("selenium-webdriver")
-
-// We've pasted the page URL here, for our open() function to use.
-const url = "http://scrollmagic.io/examples/advanced/infinite_scrolling.html"
+const { scroll_magic: url } = require("../../config.json")
 
 // Our class definition, constructor, and open() methods look
 // the same as they did for previous page objects.
