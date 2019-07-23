@@ -17,5 +17,6 @@
   "drag_and_drop": "https://crossbrowsertesting.github.io/drag-and-drop.html",
   "selenium_test_examples": "http://crossbrowsertesting.github.io/selenium_example_page.html",
   "by_js_locator": "https://treehouse-projects.github.io/selenium-webdriver-intermediate/byjs/app/",
-  "the-internet": "http://the-internet.herokuapp.com/login?utm_medium=email&utm_campaign=bootcamp&utm_source=elemental-selenium&utm_language=javascript&__s=6kqa4nup33pqyjqzku3q"
+  "the_internet": "http://the-internet.herokuapp.com/login?utm_medium=email&utm_campaign=bootcamp&utm_source=elemental-selenium&utm_language=javascript&__s=6kqa4nup33pqyjqzku3q",
+  "library_app": "https://library-app.firebaseapp.com/"
 }
